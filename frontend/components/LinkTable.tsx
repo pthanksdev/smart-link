@@ -49,52 +49,52 @@ export default function LinkTable({
 
   return (
     <div className="space-y-4">
-      <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="table-wrap">
+        <table className="min-w-full divide-y divide-white/10">
+          <thead className="bg-white/[0.03]">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
                 Alias
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
                 Original URL
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
                 Clicks
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-400">
                 Created
               </th>
-              <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-400">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-white/10">
             {links.map((link) => {
               const shortUrl = `${baseUrl}/${link.alias}`;
               return (
-                <tr key={link.alias} className="hover:bg-gray-50">
+                <tr key={link.alias} className="transition hover:bg-white/[0.04]">
                   <td className="whitespace-nowrap px-4 py-3">
                     <Link
                       href={`/stats/${link.alias}`}
-                      className="font-medium text-brand-600 hover:underline"
+                      className="font-medium text-indigo-300 hover:text-indigo-200"
                     >
                       {link.alias}
                     </Link>
                   </td>
-                  <td className="max-w-xs truncate px-4 py-3 text-sm text-gray-600">
+                  <td className="max-w-xs truncate px-4 py-3 text-sm text-gray-400">
                     <a
                       href={link.originalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-brand-600"
+                      className="transition hover:text-indigo-300"
                       title={link.originalUrl}
                     >
                       {link.originalUrl}
                     </a>
                   </td>
-                  <td className="whitespace-nowrap px-4 py-3 text-sm">
+                  <td className="whitespace-nowrap px-4 py-3 text-sm text-gray-200">
                     {link.clickCount}
                   </td>
                   <td className="whitespace-nowrap px-4 py-3 text-sm text-gray-500">
