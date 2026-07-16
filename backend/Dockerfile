@@ -12,6 +12,7 @@ RUN mkdir -p /app/data
 ENV PORT=5000
 ENV BASE_URL=http://localhost:5000
 ENV DB_PATH=/app/data/database.sqlite
+ENV RATELIMIT_STORAGE_URI=memory://
 
 EXPOSE 5000
 
