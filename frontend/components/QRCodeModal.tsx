@@ -31,7 +31,7 @@ export default function QRCodeModal({ url, alias, onClose }: QRCodeModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -41,9 +41,9 @@ export default function QRCodeModal({ url, alias, onClose }: QRCodeModalProps) {
         className="card max-w-sm text-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <h3 className="mb-4 text-lg font-semibold">QR Code</h3>
+        <h3 className="mb-4 text-lg font-semibold text-white">QR Code</h3>
         {error ? (
-          <p className="text-sm text-red-600">{error}</p>
+          <p className="text-sm text-red-300">{error}</p>
         ) : (
           <canvas ref={canvasRef} className="mx-auto" />
         )}
