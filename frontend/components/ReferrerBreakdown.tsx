@@ -16,12 +16,12 @@ export default function ReferrerBreakdown({ referrers }: ReferrerBreakdownProps)
       {referrers.map(({ referrer, count }) => (
         <div key={referrer}>
           <div className="mb-1 flex justify-between text-sm">
-            <span className="truncate font-medium text-gray-700">{referrer}</span>
+            <span className="truncate font-medium text-gray-200">{referrer}</span>
             <span className="ml-2 shrink-0 text-gray-500">{count}</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-gray-100">
+          <div className="h-2 overflow-hidden rounded-full bg-white/10">
             <div
-              className="h-full rounded-full bg-brand-500 transition-all"
+              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all"
               style={{ width: `${(count / max) * 100}%` }}
             />
           </div>

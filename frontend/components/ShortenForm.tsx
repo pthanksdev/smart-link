@@ -41,7 +41,7 @@ export default function ShortenForm({ onSuccess }: ShortenFormProps) {
     <div className="space-y-4">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="url" className="mb-1 block text-sm font-medium text-gray-700">
+          <label htmlFor="url" className="mb-1 block text-sm font-medium text-gray-300">
             Long URL
           </label>
           <input
@@ -56,7 +56,7 @@ export default function ShortenForm({ onSuccess }: ShortenFormProps) {
         </div>
 
         <div>
-          <label htmlFor="alias" className="mb-1 block text-sm font-medium text-gray-700">
+          <label htmlFor="alias" className="mb-1 block text-sm font-medium text-gray-300">
             Custom alias (optional)
           </label>
           <input
@@ -75,7 +75,7 @@ export default function ShortenForm({ onSuccess }: ShortenFormProps) {
         </div>
 
         {error && (
-          <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+          <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
             {error}
           </div>
         )}
@@ -86,8 +86,8 @@ export default function ShortenForm({ onSuccess }: ShortenFormProps) {
       </form>
 
       {result && (
-        <div className="rounded-lg border border-green-200 bg-green-50 p-4">
-          <p className="mb-2 text-sm font-medium text-green-800">
+        <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 backdrop-blur-sm">
+          <p className="mb-2 text-sm font-medium text-emerald-300">
             Your short link is ready!
           </p>
           <div className="flex flex-wrap items-center gap-2">
@@ -95,7 +95,7 @@ export default function ShortenForm({ onSuccess }: ShortenFormProps) {
               href={result.shortUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="break-all font-mono text-sm text-brand-600 hover:underline"
+              className="break-all font-mono text-sm text-indigo-300 hover:text-indigo-200"
             >
               {result.shortUrl}
             </a>
