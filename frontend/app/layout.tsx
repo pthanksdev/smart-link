@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BackgroundWrapper from "@/components/BackgroundWrapper";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -15,25 +16,36 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="border-b border-gray-200 bg-white">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-            <Link href="/" className="text-xl font-bold text-brand-600">
-              Smart Link
-            </Link>
-            <nav className="flex gap-4 text-sm font-medium">
-              <Link href="/" className="text-gray-600 hover:text-brand-600">
-                Home
+        <BackgroundWrapper />
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <header className="glass-header sticky top-0 z-20">
+            <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+              <Link href="/" className="text-xl font-bold text-gradient">
+                Smart Link
               </Link>
-              <Link href="/links" className="text-gray-600 hover:text-brand-600">
-                All Links
-              </Link>
-            </nav>
-          </div>
-        </header>
-        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
-        <footer className="border-t border-gray-200 py-6 text-center text-sm text-gray-400">
-          Smart Link Shortener &amp; Analytics
-        </footer>
+              <nav className="flex gap-4 text-sm font-medium">
+                <Link
+                  href="/"
+                  className="text-gray-300 transition hover:text-white"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/links"
+                  className="text-gray-300 transition hover:text-white"
+                >
+                  All Links
+                </Link>
+              </nav>
+            </div>
+          </header>
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+            {children}
+          </main>
+          <footer className="glass-footer py-6 text-center text-sm text-gray-500">
+            Smart Link Shortener &amp; Analytics
+          </footer>
+        </div>
       </body>
     </html>
   );

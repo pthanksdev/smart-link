@@ -18,7 +18,7 @@ export default async function LinksPage({ searchParams }: LinksPageProps) {
     data = await listLinks(page, limit);
   } catch {
     return (
-      <div className="card text-center text-red-600">
+      <div className="card text-center text-red-300">
         <p>Failed to load links. Is the backend running?</p>
         <p className="mt-2 text-sm text-gray-500">
           Expected API at {baseUrl}
@@ -30,7 +30,7 @@ export default async function LinksPage({ searchParams }: LinksPageProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">All Links</h1>
+        <h1 className="text-2xl font-bold text-white">All Links</h1>
         <p className="mt-1 text-gray-500">
           {data.total} shortened link{data.total !== 1 ? "s" : ""} total
         </p>
