@@ -23,7 +23,7 @@ export default async function StatsPage({ params }: StatsPageProps) {
       notFound();
     }
     return (
-      <div className="card text-center text-red-600">
+      <div className="card text-center text-red-300">
         <p>Failed to load stats. Is the backend running?</p>
       </div>
     );
@@ -37,36 +37,36 @@ export default async function StatsPage({ params }: StatsPageProps) {
         <div>
           <Link
             href="/links"
-            className="text-sm text-brand-600 hover:underline"
+            className="text-sm text-indigo-300 transition hover:text-indigo-200"
           >
             ← Back to links
           </Link>
-          <h1 className="mt-2 text-2xl font-bold">{stats.alias}</h1>
+          <h1 className="mt-2 text-2xl font-bold text-white">{stats.alias}</h1>
           <p className="mt-1 truncate text-sm text-gray-500">
             {stats.originalUrl}
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="font-mono text-sm text-brand-600">{shortUrl}</span>
+          <span className="font-mono text-sm text-indigo-300">{shortUrl}</span>
           <CopyButton text={shortUrl} />
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="card text-center">
-          <p className="text-3xl font-bold text-brand-600">
+          <p className="text-3xl font-bold text-gradient">
             {stats.totalClicks}
           </p>
           <p className="text-sm text-gray-500">Total clicks</p>
         </div>
         <div className="card text-center">
-          <p className="text-3xl font-bold text-gray-700">
+          <p className="text-3xl font-bold text-white">
             {stats.topReferrers.length}
           </p>
           <p className="text-sm text-gray-500">Referrer sources</p>
         </div>
         <div className="card text-center">
-          <p className="text-sm font-medium text-gray-700">
+          <p className="text-sm font-medium text-gray-200">
             {new Date(stats.createdAt).toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",
@@ -78,18 +78,24 @@ export default async function StatsPage({ params }: StatsPageProps) {
       </div>
 
       <div className="card">
-        <h2 className="mb-4 text-lg font-semibold">Clicks by day</h2>
+        <h2 className="mb-4 text-lg font-semibold text-white">
+          Clicks by day
+        </h2>
         <ClicksByDayChart data={stats.clicksByDay} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="card">
-          <h2 className="mb-4 text-lg font-semibold">Top referrers</h2>
+          <h2 className="mb-4 text-lg font-semibold text-white">
+            Top referrers
+          </h2>
           <ReferrerBreakdown referrers={stats.topReferrers} />
         </div>
 
         <div className="card">
-          <h2 className="mb-4 text-lg font-semibold">Top user agents</h2>
+          <h2 className="mb-4 text-lg font-semibold text-white">
+            Top user agents
+          </h2>
           {stats.topUserAgents.length === 0 ? (
             <p className="py-4 text-center text-sm text-gray-400">
               No user agent data yet
@@ -102,12 +108,12 @@ export default async function StatsPage({ params }: StatsPageProps) {
                   className="flex items-start justify-between gap-2 text-sm"
                 >
                   <span
-                    className="truncate text-gray-600"
+                    className="truncate text-gray-400"
                     title={userAgent}
                   >
                     {userAgent}
                   </span>
-                  <span className="shrink-0 font-medium text-gray-800">
+                  <span className="shrink-0 font-medium text-gray-200">
                     {count}
                   </span>
                 </div>
@@ -118,14 +124,14 @@ export default async function StatsPage({ params }: StatsPageProps) {
       </div>
 
       <div className="card">
-        <h2 className="mb-4 text-lg font-semibold">Recent clicks</h2>
+        <h2 className="mb-4 text-lg font-semibold text-white">Recent clicks</h2>
         {stats.recentClicks.length === 0 ? (
           <p className="py-4 text-center text-sm text-gray-400">
             No clicks recorded yet
           </p>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200 text-sm">
+            <table className="min-w-full divide-y divide-white/10 text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase text-gray-500">
                   <th className="px-3 py-2">Time</th>
@@ -134,9 +140,9 @@ export default async function StatsPage({ params }: StatsPageProps) {
                   <th className="px-3 py-2">User Agent</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-white/5">
                 {stats.recentClicks.map((click, i) => (
-                  <tr key={i} className="text-gray-600">
+                  <tr key={i} className="text-gray-400">
                     <td className="whitespace-nowrap px-3 py-2">
                       {new Date(click.timestamp).toLocaleString()}
                     </td>
