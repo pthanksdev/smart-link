@@ -12,7 +12,7 @@ def register_error_handlers(app: Flask) -> None:
     @app.errorhandler(ValidationError)
     def handle_validation_error(e: ValidationError):
         messages = "; ".join(
-            f"{'.'.join(str(loc) for loc in err['loc'])}: {err['msg']}"
+            f"{'.'.join(str(loc) for loc in err['loc'])}: {err['msg'].replace('Value error, ', '')}"
             for err in e.errors()
         )
         return jsonify({"error": messages}), 400
